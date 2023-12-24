@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: register-route
+          uri: http://localhost:8081/api/auth/register  # Specify the exact endpoint
+          predicates:
+            - Path=/api/auth/register
+
+        - id: authenticate-route
+          uri: http://localhost:8081/api/auth/authenticate  # Specify the exact endpoint
+          predicates:
+            - Path=/api/auth/authenticate
+
+        - id: get-user-details
+          uri: http://localhost:8083/api/users
+          predicates:
+            - Path=/api/users/**
